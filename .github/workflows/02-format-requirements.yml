@@ -72,12 +72,6 @@ jobs:
             | R001           | [Detailed requirement 1] | [How to verify this requirement] |
             | R002           | [Detailed requirement 2] | [How to verify this requirement] |
 
-            ## Constraints
-            [Any technical, business, or resource constraints if applicable]
-
-            ## Clarification Needed
-            [List specific questions if the original issue was too abstract. Omit this section if everything is clear.]
-
             ## Guidelines:
             - Number requirements sequentially as R001, R002, R003, etc.
             - Each requirement should follow the format: "The system shall/must/should [action]"
