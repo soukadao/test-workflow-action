@@ -21,7 +21,8 @@ jobs:
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          codex-args: ["--config", "mcp_servers={'devtools'={'command'='chrome-devtools-mcp'}}"]
+          codex-args: |
+            --config mcp_servers={'devtools'={'command'='chrome-devtools-mcp'}}
           prompt: |
             1. chrome-devtoolsを開始する
             2. `https://subsidy-search-app.vercel.app`にアクセスする
@@ -37,16 +38,15 @@ jobs:
             kill $(cat mcp_server.pid) || true
             rm mcp_server.pid
           fi
-    create_issue:
-      runs-on: ubuntu-latest
-      needs: codex
-      if: needs.codex.outputs.final_message != ''
-      permissions:
-        issues: write
-        pull-requests: write
-      steps:
-        - name: Create Report Issue
-          env:
-            CODEX_FINAL_MESSAGE: ${{ needs.codex.outputs.final_message }}
-          run: gh issue create --title "E2Eレポート" --body "$CODEX_FINAL_MESSAGE"
-Ï
+  create_issue:
+    runs-on: ubuntu-latest
+    needs: codex
+    if: needs.codex.outputs.final_message != ''
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Create Report Issue
+        env:
+          CODEX_FINAL_MESSAGE: ${{ needs.codex.outputs.final_message }}
+        run: gh issue create --title "E2Eレポート" --body "$CODEX_FINAL_MESSAGE"
