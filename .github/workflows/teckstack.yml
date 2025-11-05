@@ -26,7 +26,7 @@ jobs:
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           codex-args: |
-            --config mcp_servers={'context7':{'url':'http://localhost:8000/mcp'}}
+            --config mcp_servers={'context7'={'url'='http://localhost:8000/mcp'}}
           prompt: |
             あなたは優秀なソフトウェアエンジニアです。
             ユーザーコンテキストから技術選定を行なって欲しいです。
