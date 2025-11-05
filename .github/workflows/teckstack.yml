@@ -12,12 +12,8 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install and build context7 MCP
-        run: |
-          npm install -g @upstash/context7-mcp@v1.0.26
-          cd $(npm root -g)/@upstash/context7-mcp
-          bun install
-          bun run build
+      - name: Install context7 MCP
+        run: npm install -g @upstash/context7-mcp@v1.0.26
 
       - name: Start MCP Server
         run: |
