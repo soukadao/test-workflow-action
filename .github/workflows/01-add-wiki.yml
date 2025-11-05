@@ -12,11 +12,13 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Wiki
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -xe
           git config user.name  "[bot] ${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git submodule add https://github.com/${{ github.repository }}.wiki.git wiki
+          git submodule add https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.wiki.git wiki
           git add .gitmodules wiki
           git commit -m "docs: add GitHub wiki as submodule"
           git push
