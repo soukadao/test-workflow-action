@@ -1,4 +1,4 @@
-name: MCP Test
+name: E2E Report
 on:
   workflow_dispatch:
 jobs:
@@ -35,5 +35,6 @@ jobs:
       - name: Create Report Issue
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
           CODEX_FINAL_MESSAGE: ${{ needs.codex.outputs.final_message }}
-        run: gh issue create --title "E2Eレポート" --body "$CODEX_FINAL_MESSAGE"
+        run: gh issue create --title "E2Eレポート" --body "$CODEX_FINAL_MESSAGE" --repo "$REPO"
