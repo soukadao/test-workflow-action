@@ -34,5 +34,6 @@ jobs:
     steps:
       - name: Create Report Issue
         env:
+          GH_TOKEN: ${{ github.token }}
           CODEX_FINAL_MESSAGE: ${{ needs.codex.outputs.final_message }}
         run: gh issue create --title "E2Eレポート" --body "$CODEX_FINAL_MESSAGE"
