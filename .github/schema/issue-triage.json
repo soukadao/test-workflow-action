@@ -10,8 +10,8 @@
       ]
     }
   },
-  "additionalProperties": false,
   "required": [
     "label"
-  ]
+  ],
+  "additionalProperties": false
 }
