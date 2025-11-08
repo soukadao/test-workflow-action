@@ -42,6 +42,9 @@ jobs:
           prompt: |
             Analyze this issue and determine the appropriate label.
 
+            Available labels:
+            ${{ steps.get_labels.outputs.labels }}
+
             Issue #${{ github.event.issue.number }}: ${{ github.event.issue.title }}
 
             ${{ github.event.issue.body }}
@@ -49,9 +52,9 @@ jobs:
       - name: Extract Label
         id: extract_label
         env:
-          CODEX_OUTPUT: ${{ steps.run_codex.outputs.output }}
+          CODEX_FINAL_MESSAGE: ${{ steps.run_codex.outputs.final-message }}
         run: |
-          label=$(echo "$CODEX_OUTPUT" | jq -r '.label')
+          label=$(echo "$CODEX_FINAL_MESSAGE" | jq -r '.label')
           echo "label=$label" >> $GITHUB_OUTPUT
 
   apply_label:
