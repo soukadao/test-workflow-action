@@ -1,0 +1,7 @@
+# Book Management App
+book-management-app/node_modules
+book-management-app/.next
+book-management-app/out
+book-management-app/build
+book-management-app/.env*
+book-management-app/*.tsbuildinfo
